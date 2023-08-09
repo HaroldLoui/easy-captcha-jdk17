@@ -52,27 +52,43 @@
 
 ---
 
-## 3.导入项目
+## 3.安装并导入项目中
 
-### 3.1.gradle方式的引入
+> 暂未上传到中央仓库，需要本地进行安装
 
-```text
-dependencies {
-    compile 'com.github.haroldloui:easy-captcha-jdk17:2.0.1'
-}
+### 3.1.克隆本项目
+
+```bash
+git clone https://github.com/HaroldLoui/easy-captcha-jdk17.git
+cd easy-captcha-jdk17
 ```
 
-### 3.2.maven方式引入
+### 3.2.使用maven打jar包
+
+```bash
+mvn clean install -Prelease
+```
+### 3.3.将jar包安装到本地仓库
+
+```bash
+mvn install:install-file \
+  -Dfile="target\easy-captcha-jdk17-2.0.1.jar" \
+  -Dsources="target\easy-captcha-jdk17-2.0.1-sources.jar" \
+  -Djavadoc="target\easy-captcha-jdk17-2.0.1-javadoc.jar" \
+  -DgroupId="com.github.haroldloui" \
+  -DartifactId="easy-captcha-jdk17" \
+  -Dversion="2.0.1" \
+  -Dpackaging=jar
+```
+
+### 3.4.在项目中引入依赖
 
 ```xml
-
-<dependencies>
-    <dependency>
-        <groupId>com.github.haroldloui</groupId>
-        <artifactId>easy-captcha-jdk17</artifactId>
-        <version>2.0.1</version>
-    </dependency>
-</dependencies>
+<dependency>
+  <groupId>com.github.haroldloui</groupId>
+  <artifactId>easy-captcha-jdk17</artifactId>
+  <version>2.0.1</version>
+</dependency>
 ```
 
 ## 4.使用方法
